@@ -24,10 +24,6 @@ let bookText = document.getElementById("book-text");
 class Book {
   constructor() {}
 
-  // static deleteBook(text1, text2) {
-  //   Book.removeBook(text1, text2);
-  // }
-
   static validateInputData = (title, author) => {
     if (title.length < 1 || author.length < 1) {
       return false;
@@ -103,3 +99,7 @@ form.addEventListener("submit", (e) => {
   Title.value = "";
   Author.value = "";
 });
+
+window.deleteBook = (text1, text2) => {
+  Book.removeBook(text1, text2);
+};
