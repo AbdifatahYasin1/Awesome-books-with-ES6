@@ -23,19 +23,20 @@ export const showOnlyContact = () => {
   contact.style.display = "block";
   container.style.display = "none";
   bookText.style.display = "none";
+  // date.style.display = "block";
 };
 
 export const showBooksOnly = () => {
   container.style.display = "none";
   bookText.style.display = "block";
   contact.style.display = "none";
-  date.style.display = "none";
+  // date.style.display = "none";
 };
 export const showOnlyForm = () => {
   container.style.display = "block";
   bookText.style.display = "none";
   contact.style.display = "none";
-  date.style.display = "none";
+  // date.style.display = "none";
 };
 
 export const init = () => {

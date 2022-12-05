@@ -10,11 +10,11 @@ import {
 
 import { DateTime } from "./modules/luxon.js";
 
-const displayDate = document.querySelector(".date");
+// const displayDate = document.querySelector(".date");
 
-displayDate.innerHTML = `${DateTime.local().toLocaleString(
-  DateTime.DATETIME_MED_WITH_SECONDS
-)}`;
+// const displayDateFunction = () => {
+
+// };
 
 const form = document.querySelector("#form");
 let Author = document.querySelector(".Author");
@@ -91,7 +91,16 @@ class Book {
   };
 }
 
-document.addEventListener("DOMContentLoaded", Book.renderBooks());
+document.addEventListener("DOMContentLoaded", () => {
+  Book.renderBooks();
+  document.querySelector(
+    ".date"
+  ).textContent = `${DateTime.local().toLocaleString(
+    DateTime.DATETIME_MED_WITH_SECONDS
+  )}`;
+});
+
+// document.addEventListener("DOMContentLoaded", );
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
