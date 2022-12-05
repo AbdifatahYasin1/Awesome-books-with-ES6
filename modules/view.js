@@ -2,9 +2,9 @@ export const displayBooks = document.querySelector("#display_list");
 export const displayForm = document.querySelector("#display_form");
 export const contact = document.querySelector("#contact");
 export const displayContact = document.querySelector("#display_contact");
-export let containerbooks = document.querySelector(".container-books");
-export let container = document.querySelector(".container");
-export let bookText = document.getElementById("book-text");
+export const containerbooks = document.querySelector(".container-books");
+export const container = document.querySelector(".container");
+export const bookText = document.getElementById("book-text");
 export const date = document.querySelector(".date");
 
 export const addBookList = document.querySelector("#form");
@@ -49,13 +49,8 @@ export const init = () => {
     showOnlyForm();
   }
 };
+
 window.document.addEventListener("DOMContentLoaded", init());
 displayContact.addEventListener("click", showOnlyContact);
 displayBooks.addEventListener("click", showBooksOnly);
 displayForm.addEventListener("click", showOnlyForm);
-
-export const showDate = () => {
-  date.innerHTML = `${new Date()}`;
-};
-
-setInterval(showDate, 1000);

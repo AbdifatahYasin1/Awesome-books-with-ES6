@@ -8,32 +8,34 @@ import {
   showOnlyForm,
 } from "./modules/view.js";
 
-let form = document.querySelector("#form");
+import { DateTime } from "./modules/luxon.js";
+
+const displayDate = document.querySelector(".date");
+
+displayDate.innerHTML = `${DateTime.local().toLocaleString(
+  DateTime.DATETIME_MED_WITH_SECONDS
+)}`;
+
+const form = document.querySelector("#form");
 let Author = document.querySelector(".Author");
 let Title = document.querySelector(".Title");
-let msg = document.getElementById("msg");
 let bookText = document.getElementById("book-text");
-// let containerbooks = document.querySelector(".container-books");
-// let container = document.querySelector(".container");
-let list = document.querySelector(".list");
-const addNew = document.querySelector(".addNew");
-// const contact = document.querySelector("#contact");
-// const displayContact = document.querySelector("#display_contact");
-// const displayBooks = document.querySelector("#display_list");
-// const displayForm = document.querySelector("#display_form");
-// const date = document.querySelector(".date");
 
 class Book {
   constructor() {}
 
-  static validateInputData(title, author) {
+  // static deleteBook(text1, text2) {
+  //   Book.removeBook(text1, text2);
+  // }
+
+  static validateInputData = (title, author) => {
     if (title.length < 1 || author.length < 1) {
       return false;
     }
     return true;
-  }
+  };
 
-  save(title, author) {
+  save = (title, author) => {
     let books = [];
     if (localStorage.getItem("book") === null) {
       books = [];
@@ -43,9 +45,9 @@ class Book {
     let book = { text1: title, text2: author };
     books.push(book);
     localStorage.setItem("book", JSON.stringify(books));
-  }
+  };
 
-  static addBook(title, author) {
+  static addBook = (title, author) => {
     const isValidInput = this.validateInputData(title, author);
     if (!isValidInput) console.log("Enter Valid Input");
     else {
@@ -53,9 +55,9 @@ class Book {
       book.save(title, author);
       this.renderBooks();
     }
-  }
+  };
 
-  static removeBook(title, author) {
+  static removeBook = (title, author) => {
     let books = [];
 
     if (localStorage.getItem("book") === null) {
@@ -70,8 +72,9 @@ class Book {
     });
     localStorage.setItem("book", JSON.stringify(books));
     this.renderBooks();
-  }
-  static renderBooks() {
+  };
+
+  static renderBooks = () => {
     bookText.innerHTML = "";
     let books = [];
     if (localStorage.getItem("book") === null) {
@@ -89,7 +92,7 @@ class Book {
             `;
       });
     }
-  }
+  };
 }
 
 document.addEventListener("DOMContentLoaded", Book.renderBooks());
@@ -100,9 +103,3 @@ form.addEventListener("submit", (e) => {
   Title.value = "";
   Author.value = "";
 });
-
-function deleteBook(text1, text2) {
-  Book.removeBook(text1, text2);
-}
-
-///this is new
